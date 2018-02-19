@@ -1,5 +1,5 @@
 ---
-title: "readFARS"
+title: "DataScienceRPackageAssignment"
 author: "Albert Lee"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette

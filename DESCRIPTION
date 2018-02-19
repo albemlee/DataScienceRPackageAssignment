@@ -1,14 +1,15 @@
-Package: readFARS
+Package: DataScienceRPackageAssignment
 Type: Package
-Title: What the Package Does (Title Case)
+Title: Analyze Data from FARS
 Version: 0.1.0
-Author: Who wrote it
-Maintainer: The package maintainer <yourself@somewhere.net>
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
-License: What license is it under?
+Author: Albert Lee
+Maintainer: Albert Lee <albemlee@umich.edu>
+Description: This package reads data from the US National Highway Traffic Safety Administration's FARS (Fatality Accidents Reporting System) stored in a zip file. FARS contains data from all fatalities in motor vehicle crashes.
+License: GPL-3
+URL: https://github.com/albemlee/DataScienceRPackageAssignment
 Encoding: UTF-8
 LazyData: true
 Suggests: knitr,
     rmarkdown
 VignetteBuilder: knitr
+RoxygenNote: 6.0.1

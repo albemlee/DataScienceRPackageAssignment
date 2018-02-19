@@ -23,6 +23,8 @@ fars_read <- function(filename) {
 #'
 #' This is a function that creates a filename based on the year.
 #'
+#' @importFrom dplyr
+#'
 #' @param year A character string representing the year.
 #' 
 #' @return This function returns the filename that corresponds to year.
@@ -30,7 +32,7 @@ fars_read <- function(filename) {
 #' @export
 make_filename <- function(year) {
         year <- as.integer(year)
-        sprintf("accident_%d.csv.bz2", year)
+        sprintf("data-raw/accident_%d.csv.bz2", year)
 }
 
 #' Read fars data files based on a list of years.
