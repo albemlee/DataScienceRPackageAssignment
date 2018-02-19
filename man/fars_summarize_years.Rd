@@ -18,8 +18,10 @@ This is a function that reads multiple fars data files based on a list of
 years and provides the sum of data points for each year and month
 }
 \examples{
+\dontrun{
 fars_summarize_years(2013)
 fars_summarize_years(2013:2015)
 fars_summarize_years(c(2013, 2015))
+}
 
 }

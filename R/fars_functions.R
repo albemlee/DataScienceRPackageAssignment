@@ -85,9 +85,11 @@ fars_read_years <- function(years) {
 #'    by year and month.
 #'
 #' @examples
+#' \dontrun{
 #' fars_summarize_years(2013)
 #' fars_summarize_years(2013:2015)
 #' fars_summarize_years(c(2013, 2015))
+#' }
 #'
 #' @export
 fars_summarize_years <- function(years) {
@@ -115,9 +117,9 @@ fars_summarize_years <- function(years) {
 #' @return This function returns a map of locations of accidents.
 #'
 #' @examples
-#' 
+#' \dontrun{
 #' fars_map_state(1, 2013)
-#' 
+#' }
 #'
 #' @export
 fars_map_state <- function(state.num, year) {
