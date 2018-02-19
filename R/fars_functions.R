@@ -92,10 +92,12 @@ fars_read_years <- function(years) {
 #' @export
 fars_summarize_years <- function(years) {
         dat_list <- fars_read_years(years)
-        dplyr::bind_rows(dat_list) %>% 
-                dplyr::group_by(year, MONTH) %>% 
-                dplyr::summarize(n = n()) %>%
-                tidyr::spread(year, n)
+        dat_list <- dat_list %>%
+          dplyr::bind_rows() %>%
+          dplyr::group_by(year, MONTH) %>%
+          dplyr::summarize(n = n()) %>%
+          tidyr::spread(year, n)
+        return(dat_list)
 }
 
 #' Print a map showing where accidents occured
