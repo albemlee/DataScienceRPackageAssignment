@@ -1,0 +1,24 @@
+---
+title: "readFARS"
+author: "Albert Lee"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+This package reads data from the US National Highway Traffic Safety Administration's FARS (Fatality Accidents Reporting System) stored in a zip file. FARS contains data from all fatalities in motor vehicle crashes.
+
+The main features of the package are functions that
+
+- Summarize FARS data based on a given year
+- Produce a map with the locations of all accidents in a given year
