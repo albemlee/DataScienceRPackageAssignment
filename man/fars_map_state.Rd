@@ -19,6 +19,8 @@ This is a function that prints a map of the locations of accidents in a
    particular state and year.
 }
 \examples{
+
 fars_map_state(1, 2013)
+
 
 }

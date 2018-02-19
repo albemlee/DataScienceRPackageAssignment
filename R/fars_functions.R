@@ -2,7 +2,8 @@
 #'
 #' This is a function that returns a tibble based on a csv.bz2 file.
 #' 
-#' @importFrom dplyr
+#' @import dplyr
+#' @import readr
 #'
 #' @param filename A character string or integer representing the location of
 #'    the file to be read.
@@ -11,8 +12,9 @@
 #'
 #' @export
 fars_read <- function(filename) {
-        if(!file.exists(filename))
+        if(!file.exists(filename)){
                 stop("file '", filename, "' does not exist")
+        }
         data <- suppressMessages({
                 readr::read_csv(filename, progress = FALSE)
         })
@@ -23,7 +25,7 @@ fars_read <- function(filename) {
 #'
 #' This is a function that creates a filename based on the year.
 #'
-#' @importFrom dplyr
+#' @import dplyr
 #'
 #' @param year A character string representing the year.
 #' 
@@ -32,7 +34,8 @@ fars_read <- function(filename) {
 #' @export
 make_filename <- function(year) {
         year <- as.integer(year)
-        sprintf("data-raw/accident_%d.csv.bz2", year)
+        file <- sprintf("accident_%d.csv.bz2", year)
+        system.file("extdata", file, package="DataScienceRPackageAssignment")
 }
 
 #' Read fars data files based on a list of years.
@@ -40,7 +43,7 @@ make_filename <- function(year) {
 #' This is a function that reads multiple fars data files based on a list of 
 #' years.
 #'
-#' @importFrom dplyr
+#' @import dplyr
 #'
 #' @param years A list of integers representing the years to include.
 #' 
@@ -57,8 +60,10 @@ fars_read_years <- function(years) {
                 file <- make_filename(year)
                 tryCatch({
                         dat <- fars_read(file)
-                        dplyr::mutate(dat, year = year) %>% 
-                                dplyr::select(MONTH, year)
+                        dat <- dat %>%
+                          dplyr::mutate(year = year) %>%
+                          dplyr::select(MONTH, year)
+                        return(dat)
                 }, error = function(e) {
                         warning("invalid year: ", year)
                         return(NULL)
@@ -71,8 +76,8 @@ fars_read_years <- function(years) {
 #' This is a function that reads multiple fars data files based on a list of 
 #' years and provides the sum of data points for each year and month
 #'
-#' @importFrom dplyr
-#' @importFrom tidyr
+#' @import dplyr
+#' @import tidyr
 #'
 #' @param years A list of integers representing the years to include.
 #' 
@@ -98,8 +103,8 @@ fars_summarize_years <- function(years) {
 #' This is a function that prints a map of the locations of accidents in a
 #'    particular state and year.
 #'
-#' @importFrom dplyr
-#' @importFrom map
+#' @import dplyr
+#' @import maps
 #'
 #' @param state.num An integer representing the state.
 #'
@@ -108,7 +113,9 @@ fars_summarize_years <- function(years) {
 #' @return This function returns a map of locations of accidents.
 #'
 #' @examples
+#' 
 #' fars_map_state(1, 2013)
+#' 
 #'
 #' @export
 fars_map_state <- function(state.num, year) {
