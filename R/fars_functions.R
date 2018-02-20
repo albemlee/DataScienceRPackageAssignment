@@ -50,9 +50,11 @@ make_filename <- function(year) {
 #' @return This function returns a list with tibbles for every year included.
 #'
 #' @examples
+#' \dontrun{
 #' fars_read_years(2013)
 #' fars_read_years(2013:2015)
 #' fars_read_years(c(2013, 2015))
+#' }
 #'
 #' @export
 fars_read_years <- function(years) {
@@ -60,8 +62,7 @@ fars_read_years <- function(years) {
                 file <- make_filename(year)
                 tryCatch({
                         dat <- fars_read(file)
-                        dat <- dat %>%
-                          dplyr::mutate(year = year) %>%
+                        dplyr::mutate(dat, year = year) %>%
                           dplyr::select(MONTH, year)
                         return(dat)
                 }, error = function(e) {

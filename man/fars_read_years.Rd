@@ -17,8 +17,10 @@ This is a function that reads multiple fars data files based on a list of
 years.
 }
 \examples{
+\dontrun{
 fars_read_years(2013)
 fars_read_years(2013:2015)
 fars_read_years(c(2013, 2015))
+}
 
 }
